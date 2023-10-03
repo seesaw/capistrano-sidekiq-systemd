@@ -155,6 +155,18 @@ This will add:
 
 Though i am not able to get it to work because we use `--user` to control systemd. TODO: Investigate.
 
+## User to run with (systemd)
+There is an available option to set up user/group for systemd.service:
+
+You can set (independently) with:
+```ruby
+set :sidekiq_systemd_user,  'job_processor'
+set :sidekiq_systemd_group, 'sidekiq'
+```
+This will add:
+
+    User=job_processor
+    Group=sidekiq
 
 ## Configuring systemd
 To generate and upload `.service` file please run:

@@ -5,6 +5,8 @@ namespace :load do
     set :sidekiq_roles, fetch(:sidekiq_role, :app)
     set :sidekiq_options_per_process, nil
     set :sidekiq_user, nil
+    set :sidekiq_systemd_user, nil
+    set :sidekiq_systemd_group, nil
     set :sidekiq_max_mem, nil
     set :service_unit_name, "sidekiq-#{fetch(:stage)}.service"
     set :sidekiq_service_unit_user, :user

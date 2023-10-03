@@ -11,7 +11,8 @@ ExecReload=/bin/kill -TSTP $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
 <%="StandardOutput=append:#{fetch(:sidekiq_log)}" if fetch(:sidekiq_log) %>
 <%="StandardError=append:#{fetch(:sidekiq_error_log)}" if fetch(:sidekiq_error_log) %>
-<%="User=#{sidekiq_user(role)}" if sidekiq_user(role) %>
+<%="User=#{fetch(:sidekiq_systemd_user)}" if fetch(:sidekiq_systemd_user) %>
+<%="Group=#{fetch(:sidekiq_systemd_group)}" if fetch(:sidekiq_systemd_group) %>
 <%= "MemoryAccounting=#{ !!max_mem(index) }" if max_mem(index) %>
 <%= "MemoryLimit=#{ max_mem(index) }"  if max_mem(index) %>
 
